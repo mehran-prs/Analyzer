@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('analayzer.index');
 });
+
+Route::get('/data','Analyzer@data');

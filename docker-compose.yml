@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  web:
+    image: razheys/php:7.1-dev
+#    user: www-data
+    working_dir: /proj
+    command: ["php","artisan","serve","--host=0.0.0.0","--port=4000"]
+    restart: always
+    ports:
+      - 4000:4000
+    volumes:
+      - ./:/proj
+      - /var/sniffer/:/var/sniffer
+    networks:
+      analyzer:
+
+networks:
+  analyzer:
