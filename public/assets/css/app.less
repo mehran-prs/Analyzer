@@ -1,3 +1,5 @@
+@theme: #f74d0d;
+@theme-dark:#2a2929;
 
 .m-a-10 {
   margin: 10px;
@@ -5,6 +7,11 @@
 
 body {
   background: #f8f8f8;
+  font-family: monospace;
+}
+
+.wrap > .header h3 {
+  color: #808080;
 }
 
 .wrapper .sidebar {
@@ -13,8 +20,8 @@ body {
   bottom: 0;
   left: 0;
   width: 240px;
-  background: white;
-  box-shadow: 17px 0px 24px 2px rgba(199, 193, 193, 0.14), 7px 1px 30px 5px rgba(241, 241, 241, 0.12), 8px -1px 10px -5px rgba(177, 172, 172, 0.2);
+  background: @theme-dark;
+  box-shadow: 17px 0px 24px 2px rgba(101, 97, 97, 0.14), 7px 1px 30px 5px rgba(134, 131, 131, 0.08), 8px -1px 10px -5px rgba(213, 207, 207, 0.2);
 }
 
 .wrapper .header {
@@ -24,7 +31,7 @@ body {
 .header h3 {
   margin-top: 0;
   padding: 20px;
-  color: gray;
+  color: @theme;
 }
 
 .wrapper .wrap {
@@ -37,7 +44,10 @@ body {
   padding: 20px;
   margin: 20px;
   color: white;
-  box-shadow: 0 16px 24px 2px rgba(199, 193, 193, 0.14), 0 6px 30px 5px rgba(241, 241, 241, 0.12), 0 8px 10px -5px rgba(177, 172, 172, 0.2);
+  background: #1b1b1b !important;
+  box-shadow: 0 16px 24px 2px rgba(199, 193, 193, 0.14),
+  0 6px 30px 5px rgba(241, 241, 241, 0.12),
+  0 8px 10px -5px rgba(177, 172, 172, 0.2);
 }
 
 .overall .name {
@@ -51,11 +61,11 @@ body {
 }
 
 .sidebar .h {
-  padding: 20px;
+  padding: 20px 0;
   margin: 0 18px;
-  color: #7e29c1;
+  color: @theme;
   font-weight: bolder;
-  border-bottom: 1px solid #d2d2d2;
+  border-bottom: 1px solid #444444;
 }
 
 .sidebar {
@@ -63,20 +73,20 @@ body {
   a {
     display: block;
     line-height: 48px;
-    color: black !important;
+    color: white !important;
     margin: 0 18px;
     font-weight: bolder;
   }
 
   .c {
-    overflow-y: auto;
     height: 100%;
+    overflow-y: auto;
   }
 
   .header-item {
     text-decoration: none;
-    color: gray!important;
-    font-weight: bold;
+    color: #00ff89 !important;
+    font-weight: 100;
     font-size: 19px;
   }
 }
@@ -94,17 +104,21 @@ body {
 }
 
 .chart-types button {
-  width: 50%;
+  width: 30%;
   background: transparent;
-  border: 1px solid #dedcdc;
+  border: 1px solid #323131;
   border-radius: 2px;
   outline: none !important;
+  color: white;
+  &:hover {
+    color: white;
+  }
 }
 
 .chart-types button.active {
-  background: #7e29c1;
+  background: @theme;
   color: white;
-  border-color: #7e29c1;
+  border-color: @theme;
   box-shadow: none;
 }
 
@@ -148,4 +162,20 @@ button.btn {
   background: @color;
   border-color: @color;
   box-shadow: 17px 0px 24px 2px rgba(199, 193, 193, 0.14), 7px 1px 30px 5px rgba(241, 241, 241, 0.12), 8px -1px 10px -5px rgba(177, 172, 172, 0.2);;
+}
+
+// Customize scrollbar in chrom:
+
+.sidebar .c {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: white;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: @theme-dark;
+  }
 }

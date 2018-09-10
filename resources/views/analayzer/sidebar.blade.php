@@ -12,5 +12,6 @@
     <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" class="btn chart-type" data-type="bar">Bar</button>
         <button type="button" class="btn chart-type" data-type="line">Line</button>
+        <button type="button" class="btn chart-type" data-type="radar">Radar</button>
     </div>
 </div>
