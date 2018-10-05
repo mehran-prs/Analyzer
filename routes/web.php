@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('analayzer.index');
-});
+Route::view('/', 'analayzer.index');
 
 Route::get('/data','Analyzer@data');

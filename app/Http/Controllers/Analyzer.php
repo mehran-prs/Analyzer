@@ -38,7 +38,7 @@ class Analyzer extends Controller
 
         $this->countryAnalyzer = new Country($this->conf['non_numeric']);
 
-        $this->overall = new Overall($this->conf['non_numeric']);
+        $this->overall = new Overall($this->conf['non_numeric'], $this->conf['format_field']);
     }
 
     public function data(Request $request)
@@ -59,6 +59,10 @@ class Analyzer extends Controller
             ]);
 
         $this->analyze($request->from, $request->to);
+
+
+        // Finalize overall data:
+        $this->overall->finalize();
 
         return $this->fetchResult();
     }

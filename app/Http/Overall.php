@@ -16,13 +16,19 @@ class Overall
     /**
      * @var array $overall overall data
      */
-    protected $overall=[];
+    protected $overall = [];
 
     protected $nonNumeric = [];
 
-    public function __construct($nonNumeric)
+    /**
+     * @var string $formatWeight name of field that should format final value.
+     */
+    protected $formatWeight = '';
+
+    public function __construct($nonNumeric, $formatField)
     {
         $this->nonNumeric = $nonNumeric;
+        $this->formatWeight = $formatField;
     }
 
     public function update($data)
@@ -42,7 +48,7 @@ class Overall
      */
     protected function rawUpdate($values, $transPrefix = '')
     {
-        $this->overall;
+//        $this->overall;
 
         foreach ($values as $key => $val) {
             if (in_array($key, $this->nonNumeric))
@@ -67,4 +73,29 @@ class Overall
     {
         return $this->overall;
     }
+
+    public function finalize()
+    {
+        if (array_key_exists($this->formatWeight, $this->overall)) {
+            $this->overall[$this->formatWeight]['val'] = $this->formatBytes(
+                $this->overall[$this->formatWeight]['val']
+            );
+        }
+    }
+
+    public function formatBytes($bytes, $precision = 2)
+    {
+        $units = array('B', 'KB', 'MB', 'GB', 'TB');
+
+        $bytes = max($bytes, 0);
+        $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
+        $pow = min($pow, count($units) - 1);
+
+        // Uncomment one of the following alternatives
+        $bytes /= pow(1024, $pow);
+        // $bytes /= (1 << (10 * $pow));
+
+        return round($bytes, $precision) . ' ' . $units[$pow];
+    }
+
 }

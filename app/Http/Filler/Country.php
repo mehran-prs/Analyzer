@@ -78,8 +78,9 @@ class Country extends Filler
 
         $this->rawFill($c, $values);
 
-        // Fill ip
+        // Fill port layer
         $this->portAnalyzer->fill($c['ports'], $values['ports']);
+        // Fill ip layer
         $this->ipAnalyzer->processWholeData($c['ips'], $values['ips']);
     }
 

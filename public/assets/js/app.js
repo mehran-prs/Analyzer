@@ -230,6 +230,7 @@ $(function () {
         nonNumeric            : ['name', 'ports', 'ips'],
         drawChart             : function ($table, chartData, type) {
             let ctx = $table.find('.chart')[0].getContext('2d');
+
             if (!type)
                 type = h.getCookie('chart_type') ? h.getCookie('chart_type') : 'bar';
 
@@ -245,6 +246,7 @@ $(function () {
                         }]
                     },
                     legend: {
+                        display : false,
                         position: 'top',
                         labels  : {
                             fontColor: 'white'
@@ -414,7 +416,7 @@ $(function () {
         err : function (err) {
             for (let i in err) {
                 if (err.hasOwnProperty(i))
-                alert(err[i])
+                    alert(err[i])
             }
         },
         get : function () {
@@ -464,7 +466,7 @@ $(function () {
         Tables.refresh();
         Charts.refresh();
 
-    }
+    };
 
 
     // Initialize smot scorll to tables:
